@@ -5,10 +5,6 @@ pipeline {
         githubPush()
     }
 
-    options {
-        skipDefaultCheckout(true)
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -34,9 +30,6 @@ pipeline {
     }
 
     post {
-	success {
-            echo "Build succeeded!"
-        }
         failure {
             echo "Build failed. Not deploying to prod."
         }
