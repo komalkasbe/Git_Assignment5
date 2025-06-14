@@ -9,10 +9,6 @@ pipeline {
         skipDefaultCheckout(true)
     }
 
-    when {
-        branch 'develop'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -38,6 +34,9 @@ pipeline {
     }
 
     post {
+	    success {
+            echo "Build succeeded!"
+        }
         failure {
             echo "Build failed. Not deploying to prod."
         }
